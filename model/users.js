@@ -8,13 +8,7 @@ module.exports.save = function(userDocument) {
 
 module.exports.findAll = function() {
     return db.mongoDatabaseConnectionPromise.then(function(db) {
-        return db.collection('user').findAsync({})
-    })
-        .then(function(cursor) {
-            return cursor.toArrayAsync();
-        })
-        .then(function(content) {
-            return content;
+            return db.collection('user').find().toArray();
         })
         .catch(function(err) {
             throw err;
