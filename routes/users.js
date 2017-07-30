@@ -20,4 +20,12 @@ router.post('/', function(req, res){
     });
 });
 
+router.put('/', function(req, res){
+    users.update(req.body).then(function(result){
+        res.status(200).json(result);
+    }).catch(function(error){
+        res.status(500).json(error);
+    });
+});
+
 module.exports = router;
